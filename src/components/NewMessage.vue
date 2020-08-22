@@ -2,13 +2,14 @@
   <div class="new-messages">
     <form @submit.prevent="addMessage">
       <div class="row">
-        <div class="col s11">
+        <div class="col s9 m11">
           <label for="new-message">New Message (enter to submit)</label>
-          <input type="text" name="new-message" id="new-message" v-model="newMessage">
+          <input type="text" name="new-message" id="new-message"
+            autocomplete="off" v-model="newMessage">
           <p v-if="feedback" class="red-text">{{ feedback }}</p>
         </div>
-        <div class="col s1 ">
-          <button class="btn-floating btn-large teal m-top-5">
+        <div class="col s3 m1">
+          <button type="submit" class="btn-floating btn-large teal">
             <i class="material-icons send">send</i>
           </button>
         </div>
@@ -52,5 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.row {
+    margin-bottom: 0;
+  }
 </style>

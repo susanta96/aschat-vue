@@ -62,6 +62,9 @@ export default {
   h2 {
     font-size: 2.6rem;
     margin-bottom: 40px;
+    @media screen and (max-width: 450px){
+       margin-bottom: 20px;
+    }
   }
   span {
     font-size: 1.4rem;
@@ -80,10 +83,21 @@ export default {
     line-height: 1;
     margin: .2rem 0 .75rem 0;
   }
+  .card .card-action {
+    @media screen and (max-width: 450px){
+      padding: 10px 5px;
+    }
+  }
+  .card-content {
+    @media screen and (max-width: 450px){
+      padding: 10px 5px;
+    }
+  }
   .messages {
     text-align: left;
     max-height: 400px;
     overflow: auto;
+    overflow-x: hidden;
     li {
       margin-bottom: 1rem;
       width: max-content;
@@ -91,6 +105,9 @@ export default {
       padding: .6rem 2rem;
       max-width: 450px;
       border-radius: 6px;
+      @media screen and (max-width: 450px) {
+        max-width: 90%;
+      }
     }
     .my-message {
       background: lightblue;

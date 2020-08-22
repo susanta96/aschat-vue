@@ -17,8 +17,10 @@
 }
 
 #nav {
-  padding: 30px;
-
+  padding: 30px 1rem 0;
+@media screen and (max-width: 450px){
+  display: none;
+}
   a {
     font-weight: bold;
     color: #2c3e50;

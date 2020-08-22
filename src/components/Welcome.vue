@@ -5,7 +5,7 @@
        <h2 class="teal-text">Welcome</h2>
        <form @submit.prevent="enterChat">
          <label for="name">Enter Your Name</label>
-         <input type="text" name="name" id="name" v-model="name">
+         <input type="text" name="name" autocomplete="off" id="name" v-model="name">
          <p v-if="feedback" class="red-text">{{feedback}}</p>
          <button class="btn teal">Enter Chat</button>
        </form>
