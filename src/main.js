@@ -1,5 +1,8 @@
 import { createApp } from 'vue';
+import VueChatScroll from 'vue-chat-scroll';
 import App from './App.vue';
 import router from './router';
 
-createApp(App).use(router).mount('#app');
+const app = createApp(App);
+
+app.use(router).use(VueChatScroll).mount('#app');
