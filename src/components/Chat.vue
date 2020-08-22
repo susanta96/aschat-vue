@@ -4,10 +4,12 @@
     <div class="card">
       <div class="card-content">
         <ul class="messages" v-chat-scroll>
-          <li v-for="message in messages" :key="message.id">
-            <span class="teal-text">{{message.name}}</span>
-            <span class="grey-text text-darken-3">{{message.content}}</span>
-            <span class="grey-text time">{{message.timestamp}}</span>
+          <li :class="message.name === name ? 'my-message': 'other'"
+            v-for="message in messages"
+            :key="message.id">
+            <span class="teal-text text-darken-3 name">{{message.name}}</span>
+            <span class="grey-text text-darken-3 content">{{message.content}}</span>
+            <span class="grey-text text-darken-2 time">{{message.timestamp}}</span>
           </li>
         </ul>
       </div>
@@ -66,12 +68,39 @@ export default {
   }
   .time {
     display: block;
-     font-size: .8rem;
+    font-size: .8rem;
+  }
+  .name {
+    font-size: 1rem;
+    display: block;
+  }
+  .content {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: .2rem 0 .75rem 0;
   }
   .messages {
     text-align: left;
     max-height: 400px;
     overflow: auto;
+    li {
+      margin-bottom: 1rem;
+      width: max-content;
+      text-align: left;
+      padding: .6rem 2rem;
+      max-width: 450px;
+      border-radius: 6px;
+    }
+    .my-message {
+      background: lightblue;
+      margin-left: auto;
+      margin-right: .3rem;
+    }
+    .other {
+      background: lighten(teal, 10);
+      margin-left: .3rem;
+    }
     &::-webkit-scrollbar{
       width: 3px;
     }
