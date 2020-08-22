@@ -9,6 +9,7 @@ export default {
   name: 'AutoScroll',
   data() {
     return {
+      // eslint-disable-next-line no-unused-vars
       observer: new MutationObserver((mutations, observer) => {
         mutations.forEach((mutation) => {
           if (mutation.type === 'childList') {
