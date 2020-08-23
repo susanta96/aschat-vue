@@ -7,6 +7,10 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: (to, from, next) => {
+      if (localStorage.getItem('name')) next({ name: 'Chat', params: { name: localStorage.getItem('name') } });
+      else next();
+    },
   },
   {
     path: '/chat',
