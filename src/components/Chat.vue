@@ -65,6 +65,8 @@ export default {
 
 <style lang="scss" scoped>
 .chat {
+  max-width: 850px;
+  margin: 0 auto;
   h2 {
     font-size: 2.6rem;
     margin-bottom: 40px;
