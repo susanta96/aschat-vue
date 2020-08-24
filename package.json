@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "firebase": "^7.19.0",
+    "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.27.0",
     "vue": "^3.0.0-0",
     "vue-chat-scroll": "^1.4.0",

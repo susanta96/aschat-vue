@@ -3,9 +3,17 @@
     <form @submit.prevent="addMessage">
       <div class="row">
         <div class="col s9 m11">
-          <label for="new-message">New Message (enter to submit)</label>
-          <input type="text" name="new-message" id="new-message"
-            autocomplete="off" v-model="newMessage">
+          <!-- <label for="new-message">New Message (enter to submit)</label> -->
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="new-message">Type a Message</label>
+              <textarea id="new-message" name="new-message" v-model="newMessage"
+              @keyup.tab="$event.target.nextElementSibling.focus()"
+              class="materialize-textarea"></textarea>
+            </div>
+          </div>
+          <!-- <input type="text" name="new-message" id="new-message"
+            autocomplete="off" v-model="newMessage"> -->
           <p v-if="feedback" class="red-text">{{ feedback }}</p>
         </div>
         <div class="col s3 m1">
@@ -20,6 +28,7 @@
 
 <script>
 import db from '@/firebase/init';
+import M from 'materialize-css/dist/js/materialize';
 
 export default {
   name: 'NewMessage',
@@ -32,10 +41,12 @@ export default {
       feedback: null,
     };
   },
+  mounted() {
+    M.textareaAutoResize(document.getElementById('new-message'));
+  },
   methods: {
     addMessage() {
-      console.log(this.newMessage, Date.now(), this.name);
-      if (this.newMessage) {
+      if (this.newMessage && this.newMessage.trim()) {
         db.collection('messages').add({
           content: this.newMessage,
           name: this.name,

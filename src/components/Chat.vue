@@ -1,6 +1,6 @@
 <template>
   <div class="chat container">
-    <h2 class="center teal-text">AS Chat</h2>
+    <h2 class="center teal-text m-0">AS Chat</h2>
     <div class="card">
       <div class="card-content">
         <auto-scroll>
@@ -69,9 +69,10 @@ export default {
   margin: 0 auto;
   h2 {
     font-size: 2.6rem;
-    margin-bottom: 40px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     @media screen and (max-width: 450px) {
-      margin-bottom: 20px;
+      margin: 0;
     }
   }
   span {
@@ -90,6 +91,7 @@ export default {
     font-size: 1.2rem;
     line-height: 1;
     margin: 0.2rem 0 0.75rem 0;
+    white-space: pre-line;
   }
   .card .card-action {
     @media screen and (max-width: 450px) {
