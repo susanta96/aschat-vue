@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .scrollable {
-  height: 100%;
+  height: calc(100% - 20px);
   width: 100%;
   overflow-y: auto;
 

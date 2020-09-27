@@ -1,15 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import Welcome from '../components/Welcome.vue';
 import Chat from '../components/Chat.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Welcome',
+    component: Welcome,
     beforeEnter: (to, from, next) => {
-      if (localStorage.getItem('name')) next({ name: 'Chat', params: { name: localStorage.getItem('name') } });
-      else next();
+      const name = localStorage.getItem('name');
+      const userImg = localStorage.getItem('userImg');
+      const token = localStorage.getItem('token');
+      if (name && userImg && token) {
+        next(
+          {
+            name: 'Chat',
+            params: {
+              name,
+              userImg,
+              token,
+            },
+          },
+        );
+      } else next();
     },
   },
   {
@@ -18,8 +31,24 @@ const routes = [
     component: Chat,
     props: true,
     beforeEnter: (to, from, next) => {
-      if (to.params.name) next();
-      else next({ name: 'Home' });
+      if (to.params.name && to.params.userImg && to.params.token) next();
+      else {
+        const name = localStorage.getItem('name');
+        const userImg = localStorage.getItem('userImg');
+        const token = localStorage.getItem('token');
+        if (name && userImg && token) {
+          next(
+            {
+              name: 'Chat',
+              params: {
+                name,
+                userImg,
+                token,
+              },
+            },
+          );
+        } else next({ name: 'Welcome' });
+      }
     },
   },
 ];

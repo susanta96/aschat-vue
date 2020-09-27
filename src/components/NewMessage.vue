@@ -27,13 +27,14 @@
 </template>
 
 <script>
-import db from '@/firebase/init';
+import { db } from '@/firebase/init';
 import M from 'materialize-css/dist/js/materialize';
 
 export default {
   name: 'NewMessage',
   props: {
     name: String,
+    userImg: String,
   },
   data() {
     return {
@@ -48,8 +49,9 @@ export default {
     addMessage() {
       if (this.newMessage && this.newMessage.trim()) {
         db.collection('messages').add({
-          content: this.newMessage,
           name: this.name,
+          userImg: this.userImg,
+          content: this.newMessage,
           timestamp: Date.now(),
         }).catch((err) => console.log(err));
 
