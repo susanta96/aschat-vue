@@ -8,7 +8,8 @@
             <div class="input-field col s12">
               <label for="new-message">Type a Message</label>
               <textarea id="new-message" name="new-message" v-model="newMessage"
-              @keyup.tab="$event.target.nextElementSibling.focus()"
+              @keyup.shift.enter.prevent="toSend"
+              @keyup.tab="focusToSend"
               class="materialize-textarea"></textarea>
             </div>
           </div>
@@ -46,12 +47,18 @@ export default {
     M.textareaAutoResize(document.getElementById('new-message'));
   },
   methods: {
+    toSend() {
+      this.addMessage();
+    },
+    focusToSend(e) {
+      console.log(e.target);
+    },
     addMessage() {
       if (this.newMessage && this.newMessage.trim()) {
         db.collection('messages').add({
           name: this.name,
           userImg: this.userImg,
-          content: this.newMessage,
+          content: this.newMessage.trim(),
           timestamp: Date.now(),
         }).catch((err) => console.log(err));
 

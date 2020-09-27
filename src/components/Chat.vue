@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-content">
       <div class='row'>
-        <div class="col s3 push-s9 right-align">
+        <div class="col s4 m4 push-s8 push-m9">
           <button class="waves-effect waves-light btn" @click="logout">
             <i class="material-icons right">login</i>Logout
           </button>
@@ -99,6 +99,9 @@ export default {
     @media screen and (max-width: 450px) {
       margin: 0;
     }
+  }
+  .btn {
+    position: relative;
   }
   span {
     font-size: 1.4rem;
